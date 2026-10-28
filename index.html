@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#173f2b">
+<meta name="description" content="조아떼농원 — 자연을 살피고, 농업의 내일을 가꾸는 농부">
+<title>조아떼농원 | 자연을 살피고, 농업의 내일을 가꾸는 농부</title>
+<style>
+  :root{
+    --forest:#123d2b; --forest2:#1e573b; --moss:#5c8052; --sage:#b8cba9;
+    --lime:#d9e9a9; --cream:#f5f2e8; --paper:#fffdf7; --ink:#18291f;
+    --muted:#637267; --line:rgba(27,65,43,.16); --shadow:0 24px 60px rgba(24,54,36,.13);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:"Pretendard","Noto Sans KR",system-ui,-apple-system,sans-serif;line-height:1.7}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1180px,calc(100% - 44px));margin:auto}
+  .topbar{height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.04em;font-size:1.25rem}
+  .brand-mark{width:39px;height:39px;border-radius:50% 50% 45% 55%;background:linear-gradient(145deg,#dcebb3,#729a65 58%,#17452f);box-shadow:inset 2px 2px 5px #ffffffa8,inset -4px -5px 8px #143c2b6b,0 5px 12px #244c3426;position:relative}
+  .brand-mark:after{content:"";position:absolute;width:2px;height:25px;left:19px;top:7px;background:#f7f8df;transform:rotate(22deg);border-radius:3px}
+  nav{display:flex;gap:28px;font-size:.92rem;color:#415348}
+  nav a:hover{color:var(--forest)}
+  .nav-cta{padding:10px 17px;border:1px solid var(--line);border-radius:999px;font-size:.88rem}
+  .hero{position:relative;min-height:600px;border-radius:28px;overflow:hidden;background:linear-gradient(115deg,rgba(9,42,27,.91),rgba(14,55,34,.63) 50%,rgba(11,37,25,.22)),url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=85') center 55%/cover;color:#fff;box-shadow:var(--shadow);isolation:isolate}
+  .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 72% 18%,rgba(221,239,167,.24),transparent 34%),linear-gradient(0deg,rgba(6,27,18,.5),transparent 50%);z-index:-1}
+  .hero-content{padding:100px 8% 88px;max-width:790px}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:#d8e8b2;font-weight:700}
+  .eyebrow:before{content:"";width:30px;height:1px;background:currentColor}
+  h1,h2,h3,p{margin-top:0}
+  h1{font-family:"Noto Serif KR","Batang",serif;font-weight:600;font-size:clamp(2.5rem,5.3vw,4.8rem);line-height:1.24;letter-spacing:-.065em;margin:22px 0}
+  .hero p{max-width:530px;color:#edf2e8;font-size:1.05rem;line-height:1.95}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:13px 21px;font-weight:700;font-size:.9rem;transition:transform .25s,box-shadow .25s,background .25s}
+  .btn:hover{transform:translateY(-3px)}
+  .btn-light{background:linear-gradient(135deg,#edf5cf,#c9dda0);color:#183b29;box-shadow:0 8px 24px #091e1460,inset 0 1px 0 #fff}
+  .btn-glass{border:1px solid #ffffff72;background:#ffffff12;color:#fff;backdrop-filter:blur(10px)}
+  .hero-note{position:absolute;right:28px;bottom:28px;border:1px solid #ffffff48;background:#ffffff16;backdrop-filter:blur(14px);padding:16px 20px;border-radius:18px;color:#f7f8ee;font-size:.83rem;box-shadow:0 12px 30px #102b1c30}
+  .hero-note strong{display:block;font-family:Georgia,serif;font-size:1.2rem;color:#e1efb8;letter-spacing:.05em}
+  section{padding:105px 0}
+  .section-head{max-width:690px;margin-bottom:38px}
+  .kicker{font-size:.76rem;letter-spacing:.18em;font-weight:800;color:var(--moss);text-transform:uppercase;margin-bottom:12px}
+  h2{font-family:"Noto Serif KR","Batang",serif;font-weight:600;font-size:clamp(2rem,3.7vw,3.15rem);line-height:1.35;letter-spacing:-.055em;margin-bottom:17px}
+  .section-head p{color:var(--muted);max-width:600px}
+  .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .principle{position:relative;min-height:286px;padding:31px 29px;border:1px solid rgba(255,255,255,.75);border-radius:20px;overflow:hidden;background:linear-gradient(145deg,#fdfdf7 0%,#edf2e5 54%,#dce8d2 100%);box-shadow:0 12px 25px rgba(29,62,39,.07),inset 1px 1px 0 #fff;transition:transform .3s,box-shadow .3s}
+  .principle:before{content:"";position:absolute;width:190px;height:190px;right:-72px;top:-78px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffffffa8,#a7c99b4d 45%,transparent 72%);pointer-events:none}
+  .principle:hover{transform:translateY(-8px);box-shadow:0 25px 45px rgba(29,62,39,.15),inset 1px 1px 0 #fff}
+  .num{font-size:.72rem;letter-spacing:.17em;color:#56715a;font-weight:800}
+  .icon-orb{width:52px;height:52px;margin:24px 0 17px;display:grid;place-items:center;border-radius:50%;font-size:1.45rem;color:#17432e;background:linear-gradient(145deg,#ffffff,#dbe8d2 72%,#c1d5b7);border:1px solid #fff;box-shadow:7px 8px 17px #55765320,-5px -5px 13px #ffffffd9,inset 1px 1px 3px #ffffff}
+  .principle h3{font-family:"Noto Serif KR","Batang",serif;font-size:1.42rem;font-weight:600;letter-spacing:-.045em;margin-bottom:10px}
+  .principle p{font-size:.91rem;color:#5b6b5e;margin-bottom:0}
+  .mini-line{position:absolute;right:27px;bottom:23px;width:40px;height:1px;background:#a3b89a}
+  .story{background:linear-gradient(130deg,#123d2b,#1c5137 58%,#2d6543);color:#f9f8ef;position:relative;overflow:hidden}
+  .story:after{content:"";position:absolute;width:500px;height:500px;right:-170px;top:-160px;border-radius:50%;border:1px solid #ffffff12;box-shadow:0 0 0 45px #ffffff08,0 0 0 90px #ffffff05}
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:65px;position:relative;z-index:1}
+  .story .kicker{color:#d5e6a8}.story h2{max-width:550px}.story p{color:#dce6d8}
+  .story-image{height:440px;border-radius:24px;background:linear-gradient(0deg,#0b2e1d33,#0b2e1d00),url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=85') center/cover;box-shadow:18px 18px 0 #d3e1b31c,0 25px 60px #071c12a0;position:relative}
+  .image-label{position:absolute;left:20px;bottom:20px;padding:12px 16px;border-radius:14px;background:#f7f5e8e8;color:#23412d;font-size:.82rem;backdrop-filter:blur(10px)}
+  .crops{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .crop{min-height:170px;border-radius:18px;padding:22px;background:linear-gradient(145deg,#fffef9,#e9efe1);border:1px solid #fff;box-shadow:0 10px 24px #25482d0b;display:flex;flex-direction:column;justify-content:space-between;transition:.25s}
+  .crop:hover{transform:translateY(-5px);box-shadow:0 18px 35px #25482d16}
+  .crop .crop-icon{font-size:1.7rem;color:var(--moss)}
+  .crop strong{font-size:1.08rem}
+  .crop span{font-size:.8rem;color:var(--muted)}
+  .quote{padding:72px 28px;text-align:center;background:linear-gradient(135deg,#e4ebd7,#f9f6eb);border-radius:28px;border:1px solid #fff;box-shadow:inset 0 1px 0 #fff,0 18px 45px #1e492b0b}
+  .quote-mark{font-family:Georgia,serif;color:#739366;font-size:3rem;line-height:1}
+  .quote p{max-width:760px;margin:14px auto 20px;font-family:"Noto Serif KR","Batang",serif;font-size:clamp(1.35rem,2.5vw,2.1rem);line-height:1.65;letter-spacing:-.04em}
+  .quote small{color:var(--muted);letter-spacing:.1em}
+  .contact{padding-top:20px}
+  .contact-panel{padding:48px;border-radius:24px;background:linear-gradient(125deg,#183f2c,#285d3c);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:28px;box-shadow:0 22px 50px #1b482d24}
+  .contact-panel h2{font-size:clamp(1.7rem,3vw,2.5rem);margin-bottom:8px}
+  .contact-panel p{color:#d9e5d6;margin-bottom:0}
+  footer{padding:35px 0 42px;color:#657367;font-size:.83rem}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding-top:24px}
+  .to-top{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border:1px solid #ffffffa0;border-radius:50%;background:linear-gradient(145deg,#2c6846,#123b29);color:white;box-shadow:0 10px 25px #143b2860;cursor:pointer;z-index:10;font-size:1.2rem;transition:transform .2s}
+  .to-top:hover{transform:translateY(-4px)}
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  @media(max-width:850px){nav{gap:14px}.hero{min-height:560px}.hero-content{padding:82px 7%}.principles{grid-template-columns:1fr}.principle{min-height:245px}.story-grid{grid-template-columns:1fr;gap:32px}.story-image{height:330px}.crops{grid-template-columns:repeat(2,1fr)}section{padding:78px 0}.hero-note{position:relative;display:inline-block;right:auto;bottom:auto;margin:0 7% 28px}}
+  @media(max-width:560px){.wrap{width:min(100% - 28px,1180px)}.topbar{height:70px}.brand{font-size:1.08rem}.brand-mark{width:34px;height:34px}nav a:not(.nav-cta){display:none}.nav-cta{padding:8px 12px;font-size:.8rem}.hero{border-radius:20px;min-height:580px}.hero-content{padding:67px 25px 38px}h1{font-size:2.55rem}.hero p{font-size:.95rem}.hero-note{margin-left:25px}.section-head{margin-bottom:28px}.principle{padding:25px}.crops{gap:10px}.crop{min-height:145px;padding:17px}.quote{padding:48px 20px}.contact-panel{padding:30px 24px;align-items:flex-start;flex-direction:column}.footer-inner{align-items:flex-start;flex-direction:column;gap:8px}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="wrap topbar">
+  <a class="brand" href="#home" aria-label="조아떼농원 홈"><span class="brand-mark" aria-hidden="true"></span><span>조아떼농원</span></a>
+  <nav aria-label="주요 메뉴">
+    <a href="#philosophy">농업 철학</a><a href="#story">생태논 이야기</a><a href="#crops">재배 작물</a><a class="nav-cta" href="#contact">함께 이야기하기 ↗</a>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap" id="home">
+    <section class="hero" aria-label="조아떼농원 소개">
+      <div class="hero-content">
+        <span class="eyebrow">JOATTE ECO FARM · ANSEONG</span>
+        <h1>자연을 살피고,<br>농업의 내일을<br>가꾸는 농부</h1>
+        <p>땅을 살피고 작물을 기르며, 자연과 함께 살아가는 농업의 방법을 현장에서 배우고 기록합니다. 조아떼농원의 농사와 생태논 이야기를 나눕니다.</p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="#philosophy">농원의 철학 알아보기 <span>↗</span></a>
+          <a class="btn btn-glass" href="https://www.youtube.com/@joattefarm" target="_blank" rel="noopener">유튜브 채널 보기 ▶</a>
+        </div>
+      </div>
+      <div class="hero-note"><strong>GROW WITH NATURE</strong>자연을 존중하는 농업의 기록</div>
+    </section>
+  </div>
+
+  <section id="philosophy">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">OUR PHILOSOPHY</div>
+        <h2>농사는 땅을 돌보고,<br>생명을 살피는 일입니다.</h2>
+        <p>조아떼농원은 현장에서 배우고 실천하는 농업, 생태를 관찰하는 농업, 경험을 함께 나누는 농업을 지향합니다.</p>
+      </div>
+      <div class="principles">
+        <article class="principle reveal">
+          <div class="num">01 / SOIL</div><div class="icon-orb" aria-hidden="true">⌁</div>
+          <h3>건강한 흙</h3><p>흙의 상태를 살피고 토양과 작물이 건강하게 자랄 수 있는 환경을 고민합니다.</p><span class="mini-line"></span>
+        </article>
+        <article class="principle reveal">
+          <div class="num">02 / LIFE</div><div class="icon-orb" aria-hidden="true">✳</div>
+          <h3>생명이 살아가는 농업</h3><p>작물뿐 아니라 논과 밭 주변에서 함께 살아가는 생명과 생태계에도 관심을 기울입니다.</p><span class="mini-line"></span>
+        </article>
+        <article class="principle reveal">
+          <div class="num">03 / SHARING</div><div class="icon-orb" aria-hidden="true">↗</div>
+          <h3>경험을 나누는 농업</h3><p>직접 실천하고 관찰한 농사 경험을 기록하고 다른 농부와 나누고자 합니다.</p><span class="mini-line"></span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="wrap story-grid">
+      <div class="reveal">
+        <div class="kicker">JOATTE ECO PADDY</div>
+        <h2>논에서 만나는<br>작은 생명의 이야기</h2>
+        <p>조아떼 생태논은 벼를 기르는 공간이면서, 계절에 따라 달라지는 자연의 모습을 관찰하는 공간입니다. 농사와 생태가 만나는 순간을 기록하고 그 안에서 배운 이야기를 전합니다.</p>
+        <a class="btn btn-light" href="https://www.youtube.com/@joattefarm" target="_blank" rel="noopener">생태논 영상 만나기 ↗</a>
+      </div>
+      <div class="story-image reveal" role="img" aria-label="햇빛이 비치는 농촌 들판"><div class="image-label">조아떼 생태논 · 자연의 변화를 기록하다</div></div>
+    </div>
+  </section>
+
+  <section id="crops">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">FROM OUR FIELDS</div>
+        <h2>계절과 함께 자라는 작물</h2>
+        <p>안성의 농장에서 재배하는 다양한 작물과 농사 과정을 기록합니다. 실제 재배 품목과 인증 범위는 작물별 정보를 확인해 안내합니다.</p>
+      </div>
+      <div class="crops">
+        <article class="crop reveal"><span class="crop-icon">♧</span><div><strong>콩</strong><br><span>백태 · 서리태 등</span></div></article>
+        <article class="crop reveal"><span class="crop-icon">❋</span><div><strong>마늘</strong><br><span>재배와 관리 기록</span></div></article>
+        <article class="crop reveal"><span class="crop-icon">◉</span><div><strong>감자</strong><br><span>파종부터 수확까지</span></div></article>
+        <article class="crop reveal"><span class="crop-icon">♨</span><div><strong>생강</strong><br><span>생육 과정 관찰</span></div></article>
+        <article class="crop reveal"><span class="crop-icon">✳</span><div><strong>옥수수</strong><br><span>재배 현장 이야기</span></div></article>
+        <article class="crop reveal"><span class="crop-icon">♧</span><div><strong>노각오이</strong><br><span>계절 작물 기록</span></div></article>
+        <article class="crop reveal"><span class="crop-icon">❋</span><div><strong>고추</strong><br><span>생육과 관리 기록</span></div></article>
+        <article class="crop reveal"><span class="crop-icon">〰</span><div><strong>벼 · 생태논</strong><br><span>논과 생명의 관찰</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="quote reveal">
+        <div class="quote-mark">“</div>
+        <p>땅을 살피고, 작물을 기르고,<br>경험을 나누는 일.</p>
+        <small>조아떼농원이 이어 가고 싶은 농업의 모습입니다.</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-panel reveal">
+        <div><div class="kicker" style="color:#d6e7a8">LET'S CONNECT</div><h2>농사의 경험을 함께 나눠요.</h2><p>조아떼농원의 농업 이야기와 생태논 기록을 영상으로 만나보세요.</p></div>
+        <a class="btn btn-light" href="https://www.youtube.com/@joattefarm" target="_blank" rel="noopener">조아떼농원 유튜브 ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div><strong>조아떼농원</strong> · 경기도 안성시</div>
+    <div>자연을 살피고, 농업의 내일을 가꾸는 농부</div>
+    <div>© <span id="year"></span> JOATTE FARM</div>
+  </div>
+</footer>
+<button class="to-top" id="toTop" aria-label="맨 위로 이동" title="맨위">↑</button>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('toTop').addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>
