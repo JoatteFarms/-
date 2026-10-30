@@ -10,6 +10,8 @@
   <meta property="og:type" content="website">
   <title>조아떼농원 | 자연을 살리고, 땅의 가치를 키우는 농부</title>
   <link rel="stylesheet" href="style.css">
+  <!-- 구글 로그인(GSI) 스크립트 추가 -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -30,6 +32,33 @@
         <a href="#ecopaddy">조아떼 생태논</a>
         <a href="#stories">콘텐츠</a>
         <a class="nav-contact" href="#contact">문의하기</a>
+        
+        <!-- [구글 로그인 영역 추가] -->
+        <div class="auth-container" style="display:inline-block; margin-left:15px; vertical-align:middle;">
+          <!-- 로그인이 안 되어있을 때 보이는 구글 버튼 자리 -->
+          <div id="g_id_onload"
+               data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+               data-callback="handleCredentialResponse"
+               data-auto_prompt="false">
+          </div>
+          <div class="g_id_signin"
+               data-type="standard"
+               data-size="medium"
+               data-theme="outline"
+               data-text="sign_in_with"
+               data-shape="rectangular"
+               data-logo_alignment="left">
+          </div>
+
+          <!-- 로그인 후 사용자 정보가 표시될 영역 (처인엔 숨김) -->
+          <div id="user-profile" style="display: none; align-items: center; gap: 8px;">
+            <img id="user-avatar" src="" alt="프로필" style="width: 32px; height: 32px; border-radius: 50%;">
+            <span id="user-name" style="font-size: 0.9rem; font-weight: 600; color: #173e2b;"></span>
+            <button id="logout-btn" type="button" style="padding: 4px 8px; font-size: 0.8rem; cursor: pointer; background: #e0e0e0; border: none; border-radius: 4px;">로그아웃</button>
+          </div>
+        </div>
+        <!-- [구글 로그인 영역 끝] -->
+
       </nav>
     </div>
   </header>
