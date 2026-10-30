@@ -1,3 +1,72 @@
+JavaScript
+// 구글 로그인 응답 처리 함수
+function handleCredentialResponse(response) {
+  // JWT 토큰 디코딩 (사용자 정보 추출)
+  const responsePayload = parseJwt(response.credential);
+
+  const googleId = responsePayload.sub;
+  const userName = responsePayload.name;
+  const userEmail = responsePayload.email;
+  const userPicture = responsePayload.picture;
+
+  // 브라우저 세션에 로그인 상태 저장
+  sessionStorage.setItem('joatte_user_name', userName);
+  sessionStorage.setItem('joatte_user_pic', userPicture);
+
+  // UI 업데이트
+  updateLoginUI(userName, userPicture);
+}
+
+// JWT 토큰 파싱 헬퍼 함수
+function parseJwt(token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+      return '%' + ('0041' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+
+  return JSON.parse(jsonPayload);
+}
+
+// 로그인 상태에 따른 화면 변경 함수
+function updateLoginUI(name, picture) {
+  const googleBtn = document.getElementById('g_id_onload').parentElement; // 구글 로그인 버튼 묶음
+  const userProfile = document.getElementById('user-profile');
+  const userNameSpan = document.getElementById('user-name');
+  const userAvatar = document.getElementById('user-avatar');
+
+  if (name) {
+    if (googleBtn) googleBtn.style.display = 'none';
+    if (userProfile) {
+      userNameSpan.textContent = name + '님';
+      userAvatar.src = picture;
+      userProfile.style.display = 'flex';
+    }
+  } else {
+    if (googleBtn) googleBtn.style.display = 'block';
+    if (userProfile) userProfile.style.display = 'none';
+  }
+}
+
+// 로그아웃 버튼 이벤트 처리
+document.addEventListener('DOMContentLoaded', () => {
+  // 페이지 로드 시 기존 로그인 상태 확인
+  const savedName = sessionStorage.getItem('joatte_user_name');
+  const savedPic = sessionStorage.getItem('joatte_user_pic');
+  if (savedName) {
+    updateLoginUI(savedName, savedPic);
+  }
+
+  const logoutBtn = document.getElementById('logout-btn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      sessionStorage.removeItem('joatte_user_name');
+      sessionStorage.removeItem('joatte_user_pic');
+      updateLoginUI(null, null);
+      window.location.reload();
+    });
+  }
+});
 (() => {
   const menuButton = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".primary-nav");
